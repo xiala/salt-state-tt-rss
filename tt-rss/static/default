@@ -10,7 +10,7 @@ FORKING=1
 # PID
 PIDFILE="{{ ttrss.run }}/tt-rss-updater.pid"
 # Sets the PAHTs
-DAEMON_BASE="{{ ttrss.base }}"
+DAEMON_BASE="{{ ttrss.app }}"
 DAEMON_DIR="{{ ttrss.app }}"
 
 # Sets the USER and GROUP of the DEAMON
