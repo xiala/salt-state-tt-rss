@@ -103,7 +103,7 @@ tt-rss:
     - user: '{{ ttrss_user }}'
     - group: '{{ ttrss_group }}'
 
-""{{ ttrss_app }}/config.php":
+"{{ ttrss_app }}/config.php":
   file.symlink:
     - target: "/etc/tt-rss/config.php"
 
