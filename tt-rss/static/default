@@ -1,5 +1,5 @@
 ## Defaults for Tiny Tiny RSS update daemon init.d script
-{% include "tt-rss/vars.sls" with context %}
+{% import "tt-rss/vars.sls" as ttrss with context %}
 # Set DISABLED to 1 to prevent the daemon from starting.
 DISABLED=0
 
@@ -7,6 +7,10 @@ DISABLED=0
 # the standard one.
 FORKING=1
 
+# Sets the PAHTs
+DAEMON_BASE="{{ ttrss.base }}"
+DAEMON_DIR="{{ ttrss.app }}"
+
 # Sets the USER and GROUP of the DEAMON
-DAEMON_USER="{{ ttrss_user }}"
-DAEMON_GROUP="{{ ttrss_group }}"
+DAEMON_USER="{{ ttrss.user }}"
+DAEMON_GROUP="{{ ttrss.group }}"

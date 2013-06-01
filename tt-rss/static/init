@@ -15,7 +15,7 @@
 # Changes:
 #   * added DAEMON_USER and DAEMON_GROUP
 #   * added DAEMON_BASE
-
+{% import "tt-rss/vars.sls" as ttrss with context %}
 
 # PATH should only include /usr/* if it runs after the mountnfs.sh script
 PATH=/sbin:/usr/sbin:/bin:/usr/bin

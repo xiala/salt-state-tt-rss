@@ -3,6 +3,7 @@
 "ttuser":
   user.present:
     - name: '{{ ttrss.user }}'
+    - home: '{{ ttrss.base }}'
     - system: True
 
 "ttgroup":
