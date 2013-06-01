@@ -18,3 +18,16 @@
     plugins:
       - {{ plugin_name }}:
           {{ plug_prop }}: {{ plug_val }}
+
+## vorder notes
+
+### database creation
+
+  sudo -u ttrss psql -d ttrss -f /srv/tt-rss/www/schema/ttrss_schema_pgsql.sql
+
+### database migration
+
+current version: 115
+if there will be a update do:
+
+  sudo -u ttrss psql -d ttrss -f /srv/tt-rss/www/schema/versions/pgsql/116.sql

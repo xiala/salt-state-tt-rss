@@ -7,6 +7,8 @@ DISABLED=0
 # the standard one.
 FORKING=1
 
+# PID
+PIDFILE="{{ ttrss.run }}/tt-rss-updater.pid"
 # Sets the PAHTs
 DAEMON_BASE="{{ ttrss.base }}"
 DAEMON_DIR="{{ ttrss.app }}"

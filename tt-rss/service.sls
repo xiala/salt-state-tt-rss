@@ -42,6 +42,12 @@ tt-rss:
       - "salt://tt-rss/static/logrotate.{{ grains.os }}"
       - "salt://tt-rss/static/logrotate"
 
+"{{ ttrss.run }}":
+  file.directory:
+    - mode: 755
+    - user: "{{ ttrss.user }}"
+    - group: "{{ ttrss.group }}"
+
 # for debug varset
 # ttrss
 #   base = {{ ttrss.base }}

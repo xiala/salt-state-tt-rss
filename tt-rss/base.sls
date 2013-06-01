@@ -6,4 +6,6 @@ include:
   - tt-rss.code
   - tt-rss.service
   - tt-rss.database
+  - tt-rss.fpm
+  - tt-rss.nginx
 
