@@ -1,4 +1,4 @@
-{% include "vars.sls" with context %}
+{% include "tt-rss/vars.sls" with context %}
 
 include:
   - tt-rss.base

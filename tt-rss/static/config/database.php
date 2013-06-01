@@ -1,5 +1,5 @@
 <?php
-{% include "../../vars.sls" with context %}
+{% include "tt-rss/vars.sls" with context %}
 {% set db = salt['pillar.get']('tt-rss:db', {}) %}
 $dbuser='{{ db.get('user', 'ttrss') }};
 $dbpass='{{ db.get('pass', None) }}';

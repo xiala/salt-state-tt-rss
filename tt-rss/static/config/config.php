@@ -2,7 +2,7 @@
 	// *******************************************
 	// *** Database configuration (important!) ***
 	// *******************************************
-
+  {% include "tt-rss/vars.sls" with context %}
 	include_once('/etc/tt-rss/database.php');
 	define('DB_TYPE', $dbtype);
 	define('DB_HOST', $dbserver);

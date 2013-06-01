@@ -1,5 +1,5 @@
 
-{% include "vars.sls" with context %}
+{% include "tt-rss/vars.sls" with context %}
 
 "/etc/tt-rss/config.php":
   file.managed:
