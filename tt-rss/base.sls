@@ -113,7 +113,7 @@ tt-rss:
     - password: "{{ ttrss_db_pass }}"
 
 
-"{{ ttrss_db_db }}"
+"{{ ttrss_db_db }}":
   postgres_database.present:
     - owner: "{{ ttrss_db_user }}"
     - require:
