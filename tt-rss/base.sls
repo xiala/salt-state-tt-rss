@@ -18,13 +18,15 @@ include:
   - php.mcrypt
   - php.curl
 
-"{{ ttrss_user }}":
+"ttuser":
   user.present:
-    system: True
+    - name: '{{ ttrss_user }}'
+    - system: True
 
-"{{ ttrss_group }}":
+"ttgroup":
   group.present:
-    system: True
+    - name: '{{ ttrss_group }}'
+    - system: True
 
 tt-rss:
   service.running:
@@ -39,6 +41,8 @@ tt-rss:
       - file: "/etc/init.d/tt-rss"
       - file: "/etc/tt-rss/*"
       - file: "/srv/tt-rss/*"
+
+
 
 "/etc/default/tt-rss":
   file.managed:
