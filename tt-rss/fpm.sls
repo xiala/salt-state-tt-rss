@@ -1,6 +1,6 @@
 {% import "tt-rss/vars.sls" as ttrss with context -%}
 
-"/etc/php/fpm/pool.d/tt-rss.conf":
+"/etc/php5/fpm/pool.d/tt-rss.conf":
   file.managed:
     - template: jinja
     - source:
