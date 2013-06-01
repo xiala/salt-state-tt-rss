@@ -2,11 +2,11 @@
 
 "/etc/php/fpm/pool.d/tt-rss.conf":
   file.managed:
-    - source:
-      - "salt://tt-rss/static/fpm_pool.conf.{{ grains.id }}"
-      - "salt://tt-rss/static/fpm_pool.conf.{{ grains.os }}"
-      - "salt://tt-rss/static/fpm_pool.conf"
     - template: jinja
+    - source:
+      - "salt://tt-rss/static/fpm_pool.ini.{{ grains.id }}"
+      - "salt://tt-rss/static/fpm_pool.ini.{{ grains.os }}"
+      - "salt://tt-rss/static/fpm_pool.ini"
 
 "{{ ttrss.sessions }}":
   file.directory:
