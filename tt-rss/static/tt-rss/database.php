@@ -1,11 +1,11 @@
 <?php
-
-$dbuser='ttrss';
-$dbpass='97vVT9PmNke1';
-$basepath='';
-$dbname='ttrss';
-$dbserver='';
-$dbport='';
-$dbtype='pgsql';
+{% set db = salt['pillar.get']('tt-rss:db', {}) %}
+$dbuser='{{ db.get('user', 'ttrss') }};
+$dbpass='{{ db.get('pass', None) }}';
+$basepath='{{ db.get('pass', '') }}';
+$dbname='{{ db.get('pass', 'ttrss') }}';
+$dbserver='{{ db.get('pass', '') }}';
+$dbport='{{ db.get('pass', '') }}';
+$dbtype='{{ db.get('pass', 'pgsql' }}';
 
 ?>

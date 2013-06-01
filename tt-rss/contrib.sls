@@ -1,20 +1,12 @@
-"/srv/tt-rss-contrib":
+include:
+  - tt-rss.base
+
+{% ttrss_base = salt['pillar.get']('tt-rss:base', '/srv/tt-rss') -%}
+
+"{{ ttrss_base }}/contrib":
   git.latest:
     - name: "git@git.xiala.net:xiala-forks/tt-rss-contrib.git"
+    - target: "{{ ttrss_base }}/contrib"
 
-extends:
-  file:
-    "/etc/tt-rss/config.php":
-      - auth_imap: False
-      - auth_ldap: False
-      - auth_radius: False
-      - digest: False
-      - flattr: False
-      - googleplus: False
-      - identica: False
-      - modile: False
-      - owncloud: False
-      - pintrest: False
-      - pocket: False
-      - tweet: False
+
 

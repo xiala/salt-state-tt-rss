@@ -19,7 +19,7 @@
 	// *** Basic settings (important!) ***
 	// ***********************************
 
-	define('SELF_URL_PATH', 'http://yourserver/tt-rss/');
+	define('SELF_URL_PATH', '{{ salt['pillar.get']('tt-rss:url', '') }}');
 	// Full URL of your tt-rss installation. This should be set to the
 	// location of tt-rss directory, e.g. http://yourserver/tt-rss/
 	// You need to set this option correctly otherwise several features
@@ -45,11 +45,11 @@
 	define('PHP_EXECUTABLE', '/usr/bin/php');
 	// Path to PHP executable, used for various command-line tt-rss programs
 
-	define('LOCK_DIRECTORY', '/var/lib/tt-rss');
+	define('LOCK_DIRECTORY', '{{ salt['pillar.get']('tt-rss:lock', '') }}');
 	// Directory for lockfiles, must be writable to the user you run
 	// daemon process or cronjobs under.
 
-	define('CACHE_DIR', '/var/cache/tt-rss');
+	define('CACHE_DIR', '{{ salt['pillar.get']('tt-rss:cache', '') }}');
 	// Local cache directory for RSS feed content.
 
 	define('ICONS_DIR', "feed-icons");
@@ -171,14 +171,14 @@
 	define('CHECK_FOR_NEW_VERSION', true);
 	// Check for new versions of tt-rss automatically.
 
-	define('ENABLE_GZIP_OUTPUT', false);
+	define('ENABLE_GZIP_OUTPUT', true);
 	// Selectively gzip output to improve wire performance. This requires
 	// PHP Zlib extension on the server.
 	// Enabling this can break tt-rss in several httpd/php configurations,
 	// if you experience weird errors and tt-rss failing to start, blank pages
 	// after login, or content encoding errors, disable it.
 
-	define('PLUGINS', 'auth_remote, auth_internal, note, updater');
+	//define('PLUGINS', 'auth_remote, auth_internal, note, updater');
 	// Comma-separated list of plugins to load automatically for all users.
 	// System plugins have to be specified here. Please enable at least one
 	// authentication plugin here (auth_*).
@@ -191,48 +191,13 @@
 
 	// vim:ft=php
 
-  {%- if auth_imap %}
-  include_once("auth_imap.php");
-  {%- endif %}
+  //Dynamic configured plugins use Pillar for it!!
+  define('PLUGINS', '{% for name in salt['pillar.get']('tt-rss:plugins', {}).keys() %}{{name}}, {% endfor %}');
 
-  {%- if auth_ldap %}
-  include_once("auth_ldap.php");
-  {%- endif %}
-
-  {%- if auth_radius %}
-  include_once("auth_radius.php");
-  {%- endif %}
-
-  {%- if digest %}
-  include_once("digest.php");
-  {%- endif %}
-
-  {%- if flattr %}
-  include_once("flattr.php");
-  {%- endif %}
-
-  {%- if googleplus %}
-  include_once("googleplus.php");
-  {%- endif %}
-
-  {%- if modile %}
-  include_once("modile.php");
-  {%- endif %}
-
-  {%- if owncloud %}
-  include_once("owncloud.php");
-  {%- endif %}
-
-  {% if pintrest %}
-  include_once("pintrest.php");
-  {%- endif %}
-
-  {%- if pocket %}
-  include_once("pocket.php");
-  {%- endif %}
-
-  {%- if tweet %}
-  include_once("tweet.php");
-  {%- endif %}
+  {% for name, prop in salt['pillar.get']('tt-rss:plugins', {}).items %}
+  {% for key, value in prop.items %}
+  define('{{ key }}', '{{ value }}');
+  {% endfor %}
+  {% endfor %}
 
 ?>
