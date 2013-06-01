@@ -70,7 +70,7 @@ tt-rss:
   file.directory:
     - mode: 640
     - user: root
-    - group: '{{ ttrss.group }}'
+    - group: '{{ ttrss_group }}'
 
 "/etc/tt-rss/config.php":
   file.managed:
@@ -112,13 +112,15 @@ tt-rss:
     - target: "/etc/tt-rss/config.php"
 
 # database setup
-"{{ ttrss_db_user }}":
+"ttrss_db_user":
   postgres_user.present:
+    - name: '{{ ttrss_db_user }}'
     - password: "{{ ttrss_db_pass }}"
 
 
-"{{ ttrss_db_db }}":
+"ttrss_db_db":
   postgres_database.present:
+    - name: '{{ ttrss_db_db }}'
     - owner: "{{ ttrss_db_user }}"
     - require:
-      postgres_user: "{{ ttrss_db_user }}"
+      - postgres_user: "{{ ttrss_db_user }}"
