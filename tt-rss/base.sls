@@ -79,6 +79,8 @@ tt-rss:
       - "salt://tt-rss/static/conf/config.php.{{ grains.id }}"
       - "salt://tt-rss/static/conf/config.php.{{ grains.os }}"
       - "salt://tt-rss/static/conf/config.php"
+    - require:
+      - file: "/etc/tt-rss"
 
 "/etc/tt-rss/database.php":
   file.managed:
@@ -86,6 +88,8 @@ tt-rss:
       - "salt://tt-rss/static/conf/database.php.{{ grains.id }}"
       - "salt://tt-rss/static/conf/database.php.{{ grains.os }}"
       - "salt://tt-rss/static/conf/database.php"
+    - require:
+      - file: "/etc/tt-rss"
 
 "{{ ttrss_base }}":
   file.directory: []
@@ -95,22 +99,32 @@ tt-rss:
     - name: "git@git.xiala.net:xiala-forks/tt-rss.git"
     - target: "{{ ttrss_app }}"
     - rev: "1.7.8"
+    - require:
+      - file: "{{ ttrss_base }}"
 
 "{{ ttrss_cache }}":
   file.directory:
     - mode: 640
     - user: '{{ ttrss_user }}'
     - group: '{{ ttrss_group }}'
+    - require:
+      - file: "{{ ttrss_base }}"
 
 "{{ ttrss_lock }}":
   file.directory:
     - mode: 640
     - user: '{{ ttrss_user }}'
     - group: '{{ ttrss_group }}'
+    - require:
+      - file: "{{ ttrss_base }}"
 
 "{{ ttrss_app }}/config.php":
   file.symlink:
     - target: "/etc/tt-rss/config.php"
+    - require:
+      - file: "/etc/tt-rss/config.php"
+      - file: "{{ ttrss_base }}"
+      - git: "{{ ttrss_app }}"
 
 # database setup
 "ttrss_db_user":
