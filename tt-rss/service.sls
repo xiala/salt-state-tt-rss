@@ -1,15 +1,7 @@
 {% import "tt-rss/vars.sls" as ttrss with context %}
 
-"ttuser":
-  user.present:
-    - name: '{{ ttrss.user }}'
-    - home: '{{ ttrss.base }}'
-    - system: True
-
-"ttgroup":
-  group.present:
-    - name: '{{ ttrss.group }}'
-    - system: True
+include:
+  - tt-rss.user
 
 tt-rss:
   service.running:

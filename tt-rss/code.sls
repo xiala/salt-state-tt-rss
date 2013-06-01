@@ -13,6 +13,10 @@
 #     pass = {{ ttrss.db_pass }}
 #     db = {{ ttrss.db_db }}
 
+include:
+  - tt-rss.user
+  - tt-rss.config
+
 "{{ ttrss.base }}":
   file.directory: []
 
@@ -31,6 +35,8 @@
     - group: '{{ ttrss.group }}'
     - require:
       - file: "{{ ttrss.base }}"
+      - user: "{{ ttrss.user }}"
+      - group: "{{ ttrss.group }}"
 
 "{{ ttrss.lock }}":
   file.directory:
@@ -39,6 +45,8 @@
     - group: '{{ ttrss.group }}'
     - require:
       - file: "{{ ttrss.base }}"
+      - user: "{{ ttrss.user }}"
+      - group: "{{ ttrss.group }}"
 
 "{{ ttrss.app }}/config.php":
   file.symlink:
