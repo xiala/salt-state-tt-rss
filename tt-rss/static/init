@@ -26,7 +26,8 @@ FORKING=0
 DAEMON_USER="www-data"
 DAEMON_GROUP="www-data"
 DAEMON_BASE="/srv/tt-rss"
-DAEMON_DIR="/srv/tt-rss"
+DAEMON_DIR="/srv/tt-rss/www"
+PIDFILE=/var/run/tt-rss.pid
 
 # Read configuration variable file if it is present
 [ -r /etc/default/$NAME ] && . /etc/default/$NAME
@@ -40,7 +41,6 @@ if [ "$FORKING" != "0" ]; then
 fi
 
 LOADER=/usr/bin/php
-PIDFILE=/var/run/tt-rss.pid
 SCRIPTNAME=/etc/init.d/tt-rss
 
 # Exit if the package or loader is not installed

@@ -1,3 +1,5 @@
+{% include "vars.sls" with context %}
+
 include:
   - tt-rss.base
 

@@ -1,0 +1,11 @@
+{% set ttrss = pillar.get("ttrss", {}) -%}
+{% set ttrss_base = ttrss.get("base", "/srv/tt-rss") -%}
+{% set ttrss_app = ttrss.get("app", ttrss_base + "/www") -%}
+{% set ttrss_cache = ttrss.get("cache", ttrss_base + "/data") -%}
+{% set ttrss_lock = ttrss.get('lock', ttrss_base + "/lock") -%}
+{% set ttrss_user = ttrss.get('user', 'ttrss') -%}
+{% set ttrss_group = ttrss.get('group', 'ttrss') -%}
+{% set ttrss_db = ttrss.get('db', {}) -%}
+{% set ttrss_db_user = ttrss_db.get('user', 'ttrss') -%}
+{% set ttrss_db_pass = ttrss_db.get('pass', None) -%}
+{% set ttrss_db_db = ttrss_db.get('db', 'ttrss') -%}
