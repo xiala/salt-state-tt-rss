@@ -1,4 +1,4 @@
-{% import "tt-rss/vars.sls" as ttrss -%}
+{% import "tt-rss/vars.sls" as ttrss with context -%}
 
 "/etc/php/fpm/pool.d/tt-rss.conf":
   file.managed:
