@@ -192,10 +192,13 @@
 	// vim:ft=php
 
   //Dynamic configured plugins use Pillar for it!!
-  define('PLUGINS', '{% for name in salt['pillar.get']('tt-rss:plugins', {}).keys() %}{{name}}, {% endfor %}');
+  define('PLUGINS', '
+    {%- for name in salt['pillar.get']('tt-rss:plugins', {}).keys() -%}
+    {{name}}, {% endfor -%}
+   ');
 
-  {% for name, prop in salt['pillar.get']('tt-rss:plugins', {}).items %}
-  {% for key, value in prop.items %}
+  {% for name, prop in salt['pillar.get']('tt-rss:plugins', {}).items() -%}
+  {% for key, value in prop.items() %}
   define('{{ key }}', '{{ value }}');
   {% endfor %}
   {% endfor %}
