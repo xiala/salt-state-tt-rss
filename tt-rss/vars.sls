@@ -7,6 +7,6 @@
 {% set user = ttrss.get('user', 'ttrss') -%}
 {% set group = ttrss.get('group', 'ttrss') -%}
 {% set db = ttrss.get('db', {}) -%}
-{% set db_user = ttrss.db.get('user', 'ttrss') -%}
-{% set db_pass = ttrss.db.get('pass', None) -%}
-{% set db_db = ttrss.db.get('db', 'ttrss') -%}
+{% set db_user = db.get('user', 'ttrss') -%}
+{% set db_pass = db.get('pass', None) -%}
+{% set db_db = db.get('db', 'ttrss') -%}
