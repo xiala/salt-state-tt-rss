@@ -1,7 +1,7 @@
 include:
   - tt-rss.base
 
-{% ttrss_base = salt['pillar.get']('tt-rss:base', '/srv/tt-rss') -%}
+{% set ttrss_base = salt['pillar.get']('tt-rss:base', '/srv/tt-rss') -%}
 
 "{{ ttrss_base }}/contrib":
   git.latest:
