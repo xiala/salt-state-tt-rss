@@ -17,6 +17,7 @@
   file.managed:
     - mode: 640
     - group: '{{ ttrss.group }}'
+    - template: jinja
     - source:
       - "salt://tt-rss/static/conf/config.php.{{ grains.id }}"
       - "salt://tt-rss/static/conf/config.php.{{ grains.os }}"
@@ -28,6 +29,7 @@
   file.managed:
     - mode: 640
     - group: '{{ ttrss.group }}'
+    - template: jinja
     - source:
       - "salt://tt-rss/static/conf/database.php.{{ grains.id }}"
       - "salt://tt-rss/static/conf/database.php.{{ grains.os }}"

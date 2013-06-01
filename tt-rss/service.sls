@@ -27,6 +27,7 @@ tt-rss:
 
 "/etc/default/tt-rss":
   file.managed:
+    - template: jinja
     - source:
       - "salt://tt-rss/static/default.{{ grains.id }}"
       - "salt://tt-rss/static/default.{{ grains.os }}"
@@ -34,6 +35,7 @@ tt-rss:
 
 "/etc/init.d/tt-rss":
   file.managed:
+    - template: jinja
     - source:
       - "salt://tt-rss/static/init.{{ grains.id }}"
       - "salt://tt-rss/static/init.{{ grains.os }}"
@@ -42,6 +44,7 @@ tt-rss:
 
 "/etc/logrotate.d/tt-rss":
   file.managed:
+    - template: jinja
     - source:
       - "salt://tt-rss/static/logrotate.{{ grains.id }}"
       - "salt://tt-rss/static/logrotate.{{ grains.os }}"
