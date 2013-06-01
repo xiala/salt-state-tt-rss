@@ -4,6 +4,7 @@
 {% set app = ttrss.get("app", base + "/www") -%}
 {% set contrib = ttrss.get("contrib", base + "/contrib") -%}
 {% set cache = ttrss.get("cache", base + "/data") -%}
+{% set log = ttrss.get("log", base + "/log") -%}
 {% set lock = ttrss.get('lock', base + "/lock") -%}
 {% set run = ttrss.get('run', base + "/run") -%}
 {% set tmp = ttrss.get('tmp', base + "/tmp") -%}
