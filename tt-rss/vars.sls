@@ -2,7 +2,7 @@
 {% set ttrss = pillar.get("ttrss", {}) -%}
 {% set base = ttrss.get("base", "/srv/tt-rss") -%}
 {% set app = ttrss.get("app", base + "/www") -%}
-{% set contrib = ttrss.get("contrib", base + "/contrib" -%}
+{% set contrib = ttrss.get("contrib", base + "/contrib") -%}
 {% set cache = ttrss.get("cache", base + "/data") -%}
 {% set lock = ttrss.get('lock', base + "/lock") -%}
 {% set run = ttrss.get('run', base + "/run") -%}
