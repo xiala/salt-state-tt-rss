@@ -1,15 +1,28 @@
-{% include "tt-rss/vars.sls" with context %}
+{% import "tt-rss/vars.sls" as ttrss with context %}
 
 # database setup
-"ttrss_db_user":
+"ttrss.db_user":
   postgres_user.present:
-    - name: '{{ ttrss_db_user }}'
-    - password: "{{ ttrss_db_pass }}"
+    - name: '{{ ttrss.db_user }}'
+    - password: "{{ ttrss.db_pass }}"
 
 
-"ttrss_db_db":
+"ttrss.db_db":
   postgres_database.present:
-    - name: '{{ ttrss_db_db }}'
-    - owner: "{{ ttrss_db_user }}"
+    - name: '{{ ttrss.db_db }}'
+    - owner: "{{ ttrss.db_user }}"
     - require:
-      - postgres_user: "{{ ttrss_db_user }}"
+      - postgres_user: "{{ ttrss.db_user }}"
+
+# for debug varset
+# ttrss
+#   base = {{ ttrss.base }}
+#   app = {{ ttrss.app }}
+#   cache = {{ ttrss.cache }}
+#   lock = {{ ttrss.lock }}
+#   user = {{ ttrss.user }}
+#   group = {{ ttrss.group }}
+#   db
+#     user = {{ ttrss.db_user }}
+#     pass = {{ ttrss.db_pass }}
+#     db = {{ ttrss.db_db }}

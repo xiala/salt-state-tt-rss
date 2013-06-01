@@ -1,13 +1,13 @@
-{% include "tt-rss/vars.sls" with context %}
+{% import "tt-rss/vars.sls" as ttrss with context %}
 
 "ttuser":
   user.present:
-    - name: '{{ ttrss_user }}'
+    - name: '{{ ttrss.user }}'
     - system: True
 
 "ttgroup":
   group.present:
-    - name: '{{ ttrss_group }}'
+    - name: '{{ ttrss.group }}'
     - system: True
 
 tt-rss:
@@ -16,8 +16,8 @@ tt-rss:
       - file: "/etc/default/tt-rss"
       - file: "/etc/init.d/tt-rss"
       - file: "/etc/tt-rss/*"
-      - file: "{{ ttrss_base }}"
-      - git: "{{ ttrss_app }}"
+      - file: "{{ ttrss.base }}"
+      - git: "{{ ttrss.app }}"
     - watch:
       - file: "/etc/default/tt-rss"
       - file: "/etc/init.d/tt-rss"
@@ -50,4 +50,17 @@ tt-rss:
   file.directory:
     - mode: 640
     - user: root
-    - group: '{{ ttrss_group }}'
+    - group: '{{ ttrss.group }}'
+
+# for debug varset
+# ttrss
+#   base = {{ ttrss.base }}
+#   app = {{ ttrss.app }}
+#   cache = {{ ttrss.cache }}
+#   lock = {{ ttrss.lock }}
+#   user = {{ ttrss.user }}
+#   group = {{ ttrss.group }}
+#   db
+#     user = {{ ttrss.db_user }}
+#     pass = {{ ttrss.db_pass }}
+#     db = {{ ttrss.db_db }}

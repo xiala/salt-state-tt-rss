@@ -1,14 +1,22 @@
-{% include "tt-rss/vars.sls" with context %}
+{% import "tt-rss/vars.sls" as ttrss with context %}
 
 include:
   - tt-rss.base
 
-{% set ttrss_base = salt['pillar.get']('tt-rss:base', '/srv/tt-rss') -%}
-
-"{{ ttrss_base }}/contrib":
+"{{ ttrss.base }}/contrib":
   git.latest:
     - name: "git@git.xiala.net:xiala-forks/tt-rss-contrib.git"
-    - target: "{{ ttrss_base }}/contrib"
+    - target: "{{ ttrss.base }}/contrib"
 
-
-
+# for debug varset
+# ttrss
+#   base = {{ ttrss.base }}
+#   app = {{ ttrss.app }}
+#   cache = {{ ttrss.cache }}
+#   lock = {{ ttrss.lock }}
+#   user = {{ ttrss.user }}
+#   group = {{ ttrss.group }}
+#   db
+#     user = {{ ttrss.db_user }}
+#     pass = {{ ttrss.db_pass }}
+#     db = {{ ttrss.db_db }}

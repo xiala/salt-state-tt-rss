@@ -1,37 +1,49 @@
+{% import "tt-rss/vars.sls" as ttrss with context %}
 
-{% include "tt-rss/vars.sls" with context %}
+# for debug varset
+# ttrss
+#   base = {{ ttrss.base }}
+#   app = {{ ttrss.app }}
+#   cache = {{ ttrss.cache }}
+#   lock = {{ ttrss.lock }}
+#   user = {{ ttrss.user }}
+#   group = {{ ttrss.group }}
+#   db
+#     user = {{ ttrss.db_user }}
+#     pass = {{ ttrss.db_pass }}
+#     db = {{ ttrss.db_db }}
 
-"{{ ttrss_base }}":
+"{{ ttrss.base }}":
   file.directory: []
 
-"{{ ttrss_app }}":
+"{{ ttrss.app }}":
   git.latest:
     - name: "git@git.xiala.net:xiala-forks/tt-rss.git"
-    - target: "{{ ttrss_app }}"
+    - target: "{{ ttrss.app }}"
     - rev: "1.7.8"
     - require:
-      - file: "{{ ttrss_base }}"
+      - file: "{{ ttrss.base }}"
 
-"{{ ttrss_cache }}":
+"{{ ttrss.cache }}":
   file.directory:
     - mode: 640
-    - user: '{{ ttrss_user }}'
-    - group: '{{ ttrss_group }}'
+    - user: '{{ ttrss.user }}'
+    - group: '{{ ttrss.group }}'
     - require:
-      - file: "{{ ttrss_base }}"
+      - file: "{{ ttrss.base }}"
 
-"{{ ttrss_lock }}":
+"{{ ttrss.lock }}":
   file.directory:
     - mode: 640
-    - user: '{{ ttrss_user }}'
-    - group: '{{ ttrss_group }}'
+    - user: '{{ ttrss.user }}'
+    - group: '{{ ttrss.group }}'
     - require:
-      - file: "{{ ttrss_base }}"
+      - file: "{{ ttrss.base }}"
 
-"{{ ttrss_app }}/config.php":
+"{{ ttrss.app }}/config.php":
   file.symlink:
     - target: "/etc/tt-rss/config.php"
     - require:
       - file: "/etc/tt-rss/config.php"
-      - file: "{{ ttrss_base }}"
-      - git: "{{ ttrss_app }}"
+      - file: "{{ ttrss.base }}"
+      - git: "{{ ttrss.app }}"

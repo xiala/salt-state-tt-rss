@@ -1,10 +1,22 @@
+{% import "tt-rss/vars.sls" as ttrss with context %}
 
-{% include "tt-rss/vars.sls" with context %}
+# for debug varset
+# ttrss
+#   base = {{ ttrss.base }}
+#   app = {{ ttrss.app }}
+#   cache = {{ ttrss.cache }}
+#   lock = {{ ttrss.lock }}
+#   user = {{ ttrss.user }}
+#   group = {{ ttrss.group }}
+#   db
+#     user = {{ ttrss.db_user }}
+#     pass = {{ ttrss.db_pass }}
+#     db = {{ ttrss.db_db }}
 
 "/etc/tt-rss/config.php":
   file.managed:
     - mode: 640
-    - group: '{{ ttrss_group }}'
+    - group: '{{ ttrss.group }}'
     - source:
       - "salt://tt-rss/static/conf/config.php.{{ grains.id }}"
       - "salt://tt-rss/static/conf/config.php.{{ grains.os }}"
@@ -15,7 +27,7 @@
 "/etc/tt-rss/database.php":
   file.managed:
     - mode: 640
-    - group: '{{ ttrss_group }}'
+    - group: '{{ ttrss.group }}'
     - source:
       - "salt://tt-rss/static/conf/database.php.{{ grains.id }}"
       - "salt://tt-rss/static/conf/database.php.{{ grains.os }}"
