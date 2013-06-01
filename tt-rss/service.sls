@@ -50,12 +50,6 @@ tt-rss:
       - "salt://tt-rss/static/logrotate.{{ grains.os }}"
       - "salt://tt-rss/static/logrotate"
 
-"/etc/tt-rss":
-  file.directory:
-    - mode: 640
-    - user: root
-    - group: '{{ ttrss.group }}'
-
 # for debug varset
 # ttrss
 #   base = {{ ttrss.base }}

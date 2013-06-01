@@ -13,6 +13,12 @@
 #     pass = {{ ttrss.db_pass }}
 #     db = {{ ttrss.db_db }}
 
+"/etc/tt-rss":
+  file.directory:
+    - mode: 750
+    - user: root
+    - group: '{{ ttrss.group }}'
+
 "/etc/tt-rss/config.php":
   file.managed:
     - mode: 640
