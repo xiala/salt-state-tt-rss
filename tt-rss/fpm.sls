@@ -15,3 +15,8 @@
     - group: '{{ ttrss.group }}'
     - makedirs: True
 
+"{{ ttrss.upload_dir }}":
+  file.directory:
+    - mode: 750
+    - user: '{{ ttrss.user }}'
+    - group: '{{ ttrss.group }}'
