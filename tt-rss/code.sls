@@ -30,13 +30,37 @@ include:
 
 "{{ ttrss.cache }}":
   file.directory:
-    - mode: 640
+    - mode: 750
     - user: '{{ ttrss.user }}'
     - group: '{{ ttrss.group }}'
     - require:
       - file: "{{ ttrss.base }}"
       - user: "{{ ttrss.user }}"
       - group: "{{ ttrss.group }}"
+
+"{{ ttrss.cache }}/images":
+  file.directory:
+    - mode: 750
+    - user: '{{ ttrss.user }}'
+    - group: '{{ ttrss.group }}'
+    - require:
+      - file: '{{ ttrss.cache }}'
+
+"{{ ttrss.cache }}/export":
+  file.directory:
+    - mode: 750
+    - user: '{{ ttrss.user }}'
+    - group: '{{ ttrss.group }}'
+    - require:
+      - file: '{{ ttrss.cache }}'
+
+"{{ ttrss.cache }}/js":
+  file.directory:
+    - mode: 750
+    - user: '{{ ttrss.user }}'
+    - group: '{{ ttrss.group }}'
+    - require:
+      - file: '{{ ttrss.cache }}'
 
 "{{ ttrss.lock }}":
   file.directory:
@@ -55,3 +79,12 @@ include:
       - file: "/etc/tt-rss/config.php"
       - file: "{{ ttrss.base }}"
       - git: "{{ ttrss.app }}"
+
+"{{ ttrss.app }}/feed-icons":
+  file.directory:
+    - mode: 755
+    - user: 'ttrss.user'
+    - group: 'ttrss.group'
+    - require:
+      - git: "{{ ttrss.app }}"
+
