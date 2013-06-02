@@ -1,3 +1,4 @@
+{% import "tt-rss/vars.sls" as ttrss with context %}
 
 "/etc/nginx/salt-sites/tt-rss.conf":
   file.managed:
