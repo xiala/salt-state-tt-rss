@@ -6,5 +6,13 @@
       - "salt://tt-rss/static/nginx.conf.{{ grains.os }}"
       - "salt://tt-rss/static/nginx.conf"
     - template: jinja
+    - context:
+      vhost:
+        name: "{{ ttrss.url }}"
+        listen_http: "{{ ttrss.listen_http }}"
+        listen_https: "{{ ttrss.listen_https }}"
+        error_log: "{{ ttrss.log }}/ttrss_error.log"
+        access_log: "{{ ttrss.log }}/ttrss_error.log"
+
 
 
