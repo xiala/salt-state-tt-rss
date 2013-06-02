@@ -13,7 +13,7 @@
 {% set group = ttrss.get('group', 'ttrss') -%}
 # php settings
 {% set sessions = ttrss.get('sessions', tmp + "/sessions") -%}
-{% set upload_dir = ttrss.get('upload_dir', tmp + "/upload.tmp" -%}
+{% set upload_dir = ttrss.get('upload_dir', tmp + "/upload.tmp") -%}
 # db settings
 {% set db = ttrss.get('db', {}) -%}
 {% set db_user = db.get('user', 'ttrss') -%}
