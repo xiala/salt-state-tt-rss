@@ -62,6 +62,14 @@ include:
     - require:
       - file: '{{ ttrss.cache }}'
 
+"{{ ttrss.cache }}/upload":
+  file.directory:
+    - mode: 750
+    - user: '{{ ttrss.user }}'
+    - group: '{{ ttrss.group }}'
+    - require:
+      - file: '{{ ttrss.cache }}'
+
 "{{ ttrss.lock }}":
   file.directory:
     - mode: 640
