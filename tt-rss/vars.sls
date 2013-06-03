@@ -1,6 +1,7 @@
 # basic tt-rss config
 {% set ttrss = pillar.get("ttrss", {}) -%}
-{% set url = ttrss.get("url", "reader.xiala.net") -%}
+{% set name = ttrss.get("name", "reader.xiala.net") -%}
+{% set url = ttrss.get("url", "https://"+name) -%}
 {% set base = ttrss.get("base", "/srv/tt-rss") -%}
 {% set app = ttrss.get("app", base + "/www") -%}
 {% set contrib = ttrss.get("contrib", base + "/contrib") -%}
@@ -11,6 +12,7 @@
 {% set tmp = ttrss.get('tmp', base + "/tmp") -%}
 {% set user = ttrss.get('user', 'ttrss') -%}
 {% set group = ttrss.get('group', 'ttrss') -%}
+{% set crypt = ttrss.get('crypt', '') -%}
 # php settings
 {% set sessions = ttrss.get('sessions', tmp + "/sessions") -%}
 {% set upload_dir = ttrss.get('upload_dir', tmp + "/upload.tmp") -%}

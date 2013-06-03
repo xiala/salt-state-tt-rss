@@ -19,11 +19,18 @@
 	// *** Basic settings (important!) ***
 	// ***********************************
 
-	define('SELF_URL_PATH', '{{ salt['pillar.get']('tt-rss:url', '') }}');
+	define('SELF_URL_PATH', '{{ ttrss.url }}');
 	// Full URL of your tt-rss installation. This should be set to the
 	// location of tt-rss directory, e.g. http://yourserver/tt-rss/
 	// You need to set this option correctly otherwise several features
 	// including PUSH, bookmarklets and browser integration will not work properly.
+
+	define('FEED_CRYPT_KEY', '{{ ttrss.crypt }}');
+	// Key used for encryption of passwords for password-protected feeds
+	// in the database. A string of 24 random characters. If left blank, encryption
+	// is not used. Requires mcrypt functions.
+	// Warning: changing this key will make your stored feed passwords impossible
+	// to decrypt.
 
 	define('SINGLE_USER_MODE', false);
 	// Operate in single user mode, disables all functionality related to
@@ -45,11 +52,11 @@
 	define('PHP_EXECUTABLE', '/usr/bin/php');
 	// Path to PHP executable, used for various command-line tt-rss programs
 
-	define('LOCK_DIRECTORY', '{{ salt['pillar.get']('tt-rss:lock', '') }}');
+	define('LOCK_DIRECTORY', '{{ ttrss.lock }}');
 	// Directory for lockfiles, must be writable to the user you run
 	// daemon process or cronjobs under.
 
-	define('CACHE_DIR', '{{ salt['pillar.get']('tt-rss:cache', '') }}');
+	define('CACHE_DIR', '{{ ttrss.cache }}');
 	// Local cache directory for RSS feed content.
 
 	define('ICONS_DIR', "feed-icons");
