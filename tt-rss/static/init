@@ -25,9 +25,9 @@ DISABLED=0
 FORKING=0
 DAEMON_USER="www-data"
 DAEMON_GROUP="www-data"
-DAEMON_BASE="/srv/tt-rss"
+DAEMON_BASE="/srv/tt-rss/www"
 DAEMON_DIR="/srv/tt-rss/www"
-PIDFILE=/srv/tt-rss/run/tt-rss.pid
+PIDFILE="/srv/tt-rss/run/tt-rss.pid"
 
 # Read configuration variable file if it is present
 [ -r /etc/default/$NAME ] && . /etc/default/$NAME

@@ -101,6 +101,9 @@
 	// Enable fulltext search using Sphinx (http://www.sphinxsearch.com)
 	// Please see http://tt-rss.org/wiki/SphinxSearch for more information.
 
+	define('SPHINX_SERVER', 'localhost:9312');
+	// Hostname:port combination for the Sphinx server.
+
 	define('SPHINX_INDEX', 'ttrss');
 	// Index name in Sphinx configuration. You can specify multiple indexes
 	// as a comma-separated string.
@@ -153,11 +156,9 @@
 	define('DIGEST_SUBJECT', '[tt-rss] New headlines for last 24 hours');
 	// Subject line for email digests
 
-	define('SMTP_HOST', '');
-	// SMTP Host to send outgoing mail. Blank - use system MTA.
-
-	define('SMTP_PORT','');
-	// SMTP port to sent outgoing mail. Default is 25.
+	define('SMTP_SERVER', '');
+	// Hostname:port combination to send outgoing mail (i.e. localhost:25).
+	// Blank - use system MTA.
 
 	define('SMTP_LOGIN', '');
 	define('SMTP_PASSWORD', '');
@@ -184,6 +185,12 @@
 	// authentication plugin here (auth_*).
 	// Users may enable other user plugins from Preferences/Plugins but may not
 	// disable plugins specified in this list.
+
+	define('LOG_DESTINATION', 'sql');
+	// Log destination to use. Possible values: sql (uses internal logging
+	// you can read in Preferences -> System), syslog - logs to system log.
+	// Setting this to blank uses PHP logging (usually to http server
+	// error.log).
 
 	define('CONFIG_VERSION', 26);
 	// Expected config version. Please update this option in config.php
