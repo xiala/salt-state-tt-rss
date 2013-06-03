@@ -5,7 +5,7 @@ DISABLED=0
 
 # Set FORKING to 1 to use the forking daemon (update_daemon2.php) instead of
 # the standard one.
-FORKING=0
+FORKING=1
 
 # PID
 PIDFILE="{{ ttrss.run }}/tt-rss-updater.pid"

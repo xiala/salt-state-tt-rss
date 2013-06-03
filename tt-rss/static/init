@@ -33,7 +33,7 @@ PIDFILE="/srv/tt-rss/run/tt-rss.pid"
 [ -r /etc/default/$NAME ] && . /etc/default/$NAME
 
 DAEMON="$DAEMON_BASE/update.php"
-DAEMON_ARGS="-daemon"
+DAEMON_ARGS="--daemon"
 
 if [ "$FORKING" != "0" ]; then
 	DAEMON="$DAEMON_BASE/update_daemon2.php"

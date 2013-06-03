@@ -54,6 +54,12 @@ tt-rss:
     - user: "{{ ttrss.user }}"
     - group: "{{ ttrss.group }}"
 
+"{{ ttrss.lock }}":
+  file.directory:
+    - mode: 750
+    - user: "{{ ttrss.user }}"
+    - group: "{{ ttrss.group }}"
+
 # for debug varset
 # ttrss
 #   base = {{ ttrss.base }}
