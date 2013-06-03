@@ -27,7 +27,7 @@
 
 ### database migration
 
-current version: 115
+current version: 120
 if there will be a update do:
 
-  sudo -u ttrss psql -d ttrss -f /srv/tt-rss/www/schema/versions/pgsql/116.sql
+  sudo -u ttrss psql -d ttrss -f /srv/tt-rss/www/schema/versions/pgsql/121.sql
