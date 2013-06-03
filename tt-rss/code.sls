@@ -24,7 +24,7 @@ include:
   git.latest:
     - name: "git@git.xiala.net:xiala-forks/tt-rss.git"
     - target: "{{ ttrss.app }}"
-    - rev: "1.7.9"
+    - rev: "master"
     - require:
       - file: "{{ ttrss.base }}"
 
