@@ -7,3 +7,4 @@ include:
   - php.mcrypt
   - php.curl
   - php.pgsql
+  - php.apc
