@@ -206,8 +206,7 @@
 	// vim:ft=php
 
   //Dynamic configured plugins use Pillar for it!!
-  define('PLUGINS', 'auth_internal, note,
-    {%- for name in salt['pillar.get']('tt-rss:plugins', {}).keys() -%}
+  define('PLUGINS', 'auth_internal, note, {%- for name in salt['pillar.get']('tt-rss:plugins', {}).keys() -%}
     {{name}}, {% endfor -%}
    ');
 
