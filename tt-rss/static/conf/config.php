@@ -198,6 +198,7 @@
 	// you can read in Preferences -> System), syslog - logs to system log.
 	// Setting this to blank uses PHP logging (usually to http server
 	// error.log).
+	define('LOGFILE', '{{ ttrss.log }}/tt-rss.log');
 
 	define('CONFIG_VERSION', 26);
 	// Expected config version. Please update this option in config.php
@@ -205,15 +206,16 @@
 
 	// vim:ft=php
 
-  //Dynamic configured plugins use Pillar for it!!
-  define('PLUGINS', 'auth_internal, note, {%- for name in salt['pillar.get']('tt-rss:plugins', {}).keys() -%}
+	//Dynamic configured plugins use Pillar for it!!
+	define('PLUGINS', '
+	{%- for name in salt['pillar.get']('tt-rss:plugins', {}).keys() -%}
     {{name}}, {% endfor -%}
-   ');
+  auth_internal, note');
 
-  {% for name, prop in salt['pillar.get']('tt-rss:plugins', {}).items() -%}
-  {% for key, value in prop.items() %}
-  define('{{ key }}', '{{ value }}');
-  {% endfor %}
-  {% endfor %}
+	{% for name, prop in salt['pillar.get']('tt-rss:plugins', {}).items() -%}
+	{% for key, value in prop.items() %}
+	define('{{ key }}', '{{ value }}');
+	{%- endfor %}
+	{% endfor %}
 
 ?>
