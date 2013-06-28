@@ -9,7 +9,7 @@
     - template: jinja
     - context:
       vhost:
-        name: "{{ ttrss.url }}"
+        name: "{{ ttrss.name }}"
         listen_http: "{{ ttrss.listen_http }}"
         listen_https: "{{ ttrss.listen_https }}"
         error_log: "{{ ttrss.log }}/ttrss_error.log"
