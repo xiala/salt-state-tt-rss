@@ -70,16 +70,6 @@ include:
     - require:
       - file: '{{ ttrss.cache }}'
 
-"{{ ttrss.lock }}":
-  file.directory:
-    - mode: 640
-    - user: '{{ ttrss.user }}'
-    - group: '{{ ttrss.group }}'
-    - require:
-      - file: "{{ ttrss.base }}"
-      - user: "{{ ttrss.user }}"
-      - group: "{{ ttrss.group }}"
-
 "{{ ttrss.app }}/config.php":
   file.symlink:
     - target: "/etc/tt-rss/config.php"
