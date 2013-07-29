@@ -19,7 +19,7 @@
         - {{ plugin_name }}:
             {{ plug_prop }}: {{ plug_val }}
 
-## vorder notes
+Have a look at tt-rss/vars.sls
 
 ### database creation
 
